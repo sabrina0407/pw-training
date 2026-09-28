@@ -20,4 +20,5 @@ export class ProductPage {
   async addToBasket() {
     await this.page.getByRole('button', { name: 'Ajouter au panier' }).click();
   }
+
 }
