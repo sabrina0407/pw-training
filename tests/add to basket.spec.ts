@@ -1,9 +1,9 @@
-import { test, expect } from '@playwright/test';
+import { test, expect } from '../support/fixtures';
 
-test('test', async ({ page }) => {
-  await page.goto('https://simplecommerce1nz5qlcr-sabrina.functions.fnc.fr-par.scw.cloud/fr/catalogue/the-hitchhikers-guide-to-the-galaxy_4/');
-  await page.getByRole('button', { name: 'Ajouter au panier' }).click ()
- await expect(page.getByText('The Hitchhiker\'s Guide to the Galaxy a été ajouté à votre panier.')).toBeVisible();
-   await expect(page.locator('#top_page')).toContainText('Panier (1)');
+test('add to basket from product page', async ({ productPage }) => {
+  await productPage.open();
+  await productPage.addToBasket();
 
+  await expect(productPage.addToBasketConfirmation).toBeVisible();
+  await expect(productPage.basketSummary).toContainText('Panier (1)');
 });
