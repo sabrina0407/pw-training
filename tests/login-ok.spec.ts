@@ -6,4 +6,6 @@ test('login-ok', async ({ loginPage, productListPage }) => {
 
   await expect(productListPage.productsHeading).toBeVisible();
   await expect(productListPage.signedInAccount).toBeVisible();
+
+
 });

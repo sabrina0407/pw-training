@@ -1,13 +1,19 @@
-import { type Locator, type Page } from '@playwright/test';
+import { type Locator, type Page, expect } from '@playwright/test';
 
 export class ProductListPage {
-  readonly productsHeading: Locator;
+  readonly page: Page;
+    readonly productsHeading: Locator;
   readonly signedInAccount: Locator;
 
   constructor(page: Page) {
+    this.page = page;
     this.productsHeading = page.getByRole('heading', { name: 'All products' });
-    this.signedInAccount = page.getByRole('button', {
-      name: ' sabsebbane@hotmail.fr',
-    });
+  ;
+  } 
+  
+  async expectLoggedUser (email: string) {
+   await expect(this.page.getByRole('button', {
+      name: email ,
+    })).toBeVisible();
   }
-}
+ }

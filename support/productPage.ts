@@ -17,8 +17,22 @@ export class ProductPage {
     );
   }
 
+  async openCatalogue() {
+    await this.page.goto(
+      'https://simplecommerce1nz5qlcr-sabrina.functions.fnc.fr-par.scw.cloud/fr/catalogue/',
+    );
+  }
+
+  async openProductFromCatalogue() {
+    await this.page
+      .getByRole('link', { name: /The Hitchhiker's Guide to the/ })
+      .click();
+  }
+
   async addToBasket() {
-    await this.page.getByRole('button', { name: 'Ajouter au panier' }).click();
+    await this.page
+      .getByRole('button', { name: /^(Ajouter au panier|Add to basket)$/ })
+      .click();
   }
 
 }

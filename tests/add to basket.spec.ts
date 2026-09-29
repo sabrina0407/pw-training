@@ -6,4 +6,8 @@ test('add to basket from product page', async ({ productPage }) => {
 
   await expect(productPage.addToBasketConfirmation).toBeVisible();
   await expect(productPage.basketSummary).toContainText('Panier (1)');
-});
+await productPage.open();
+  await productPage.addToBasket();
+
+  await expect(productPage.addToBasketConfirmation).toBeVisible();
+  await expect(productPage.basketSummary).toContainText('Panier (1)');});
