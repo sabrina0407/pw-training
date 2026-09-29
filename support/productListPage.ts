@@ -3,7 +3,6 @@ import { type Locator, type Page, expect } from '@playwright/test';
 export class ProductListPage {
   readonly page: Page;
     readonly productsHeading: Locator;
-  readonly signedInAccount: Locator;
 
   constructor(page: Page) {
     this.page = page;

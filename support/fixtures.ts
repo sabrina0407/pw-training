@@ -23,13 +23,13 @@ export const test = base.extend<Fixtures>({
     await use(new ProductPage(page));
   },
   productListPage: async ({ page }, use) => {
-    await use(new ProductListPage(page));
+    await use(new ProductListPage(page ));
   },
-  basketAPI: async ({ context }, use) => {
-    await use(new BasketAPI(context.request));
+  basketAPI: async ({request }, use) => {
+    await use(new BasketAPI(request));
   },
-  loginAPI: async ({ context }, use) => {
-    await use(new LoginAPI(context.request));
+  loginAPI: async ({ page }, use) => {
+    await use(new LoginAPI(page));
   },
   loginWorkflow: async ({ loginAPI, page, productListPage }, use) => {
     await use(new LoginWorkflow(loginAPI, page, productListPage));
